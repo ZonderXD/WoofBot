@@ -18,7 +18,7 @@ from discord.ext import commands
 from discord.utils import get
 from Cybernator import Paginator
 
-bot = commands.Bot(command_prefix='.')
+bot = commands.Bot(command_prefix='h!')
 bot.remove_command('help')
 
 conn = sqlite3.connect("database.sqlite")
@@ -26,17 +26,17 @@ cursor = conn.cursor()
 
 @bot.event
 async def on_ready():
-    print(f'          [Bloody X]')
-    await bot.change_presence(status = discord.Status.idle, activity = discord.Game('⊱ Prefix: . ⊰'))
-    print(f"[Bloody X] Bot successfully launched!;")
-    print(f"[Bloody X] Name: [{bot.user}];")
-    print(f'[Bloody X] ID: [{bot.user.id}]')
+    print(f'          [Hotel]')
+    await bot.change_presence(status = discord.Status.online, activity = discord.Game('Префикс: h!'))
+    print(f"[Hotel] Bot successfully launched!;")
+    print(f"[Hotel] Name: [{bot.user}];")
+    print(f'[Hotel] ID: [{bot.user.id}]')
     print('[------------------------------]')
     print(f'          [Other]')
 
 @bot.event
 async def is_owner(ctx):
-    return ctx.author.id == 668325441224048641 or  ctx.author.id == 491928659599425537 # Айди создателя бота
+    return ctx.author.id == 668325441224048641 or  ctx.author.id == 369499654909591555 # Айди создателя бота
 
 @bot.command()
 @commands.check(is_owner)
@@ -230,30 +230,19 @@ async def meme(ctx):
     emb.set_image(url= random_meme())
     await ctx.send(embed=emb)
 
-@bot.command()
-@commands.has_permissions( administrator = True)
-async def clear(ctx, amount:int=None):
-    if amount == None:
-        return await ctx.send(embed = discord.Embed(description = f'**Укажите количество сообщений для удаления**', color=0x75218f))
-    embed = discord.Embed(description=f'**Было удалено {amount} сообщений**', color=0x75218f)
-    await ctx.message.delete()
-    await ctx.channel.purge(limit=amount)
-    await ctx.send(embed=embed, delete_after=6.0)
-
 @bot.event
 async def on_member_join( member ):
     emb = discord.Embed( description = f"**Приветствую тебя {member.mention}. Ты попал на сервер `{member.guild.name}`. Удачи тебе на сервере! 😜**", color = 0xda4a )
-    role = discord.utils.get( member.guild.roles, id = 696322642747064383 ) # Айди роли которая будет выдаватся когда человек зашёл на сервер
+    role = discord.utils.get( member.guild.roles, id = 713034231743381587 ) # Айди роли которая будет выдаватся когда человек зашёл на сервер
 
     await member.add_roles( role )
-    channel = bot.get_channel( 696322644106281032 ) # Айди канала куда будет писатся сообщение
+    channel = bot.get_channel( 713793981095477248 ) # Айди канала куда будет писатся сообщение
     await channel.send( embed = emb )
 
 @bot.command(aliases=['bot'])
 async def botinfo(ctx):
-    embed = discord.Embed(title=f"{ctx.guild.name}", description="Информация о боте **𝐖𝐨𝐨𝐟 𝐗#7002**.\n Бот был написан специально для проекта **`Woof X`**,\n Подробнее о командах: **`.help`**", color = 0x00ffff)
+    embed = discord.Embed(title=f"{ctx.guild.name}", description="Информация о боте **Отель Альтон#2307**.\n Бот был написан специально для проекта **`Отель Альтон`**,\n Подробнее о командах: **h!help`**", color = 0x00ffff)
     embed.add_field(name=f'**Меня создал:**', value="`💦 𝙎𝘼𝙈𝙐𝙍𝘼𝙄 ツ#8992`(<@668325441224048641>)", inline=False)  # Создает строку
-    embed.add_field(name=f'**Помощь в создании:**', value="`Satana★#2362`(<@342317507991961602>)", inline=False)  # Создает строку
     embed.add_field(name=f'**Лицензия:**', value="LD-v7", inline=False)  # Создает строку
     embed.add_field(name=f'**Я написан на:**', value="Discord.py", inline=False)  # Создает строку
     embed.add_field(name=f'**Версия:**', value="V.3.0.1", inline=False)  # Создает строку
@@ -351,36 +340,11 @@ async def password(ctx, lenght: int = None, number: int = None):
 async def help(ctx):
     embed1 = discord.Embed(title = '⚙ Навигация по командам:\n ❗ Обязательные параметры: `()`\n ❓ Необязательные параметры: `[]`', color=0x6fdb9e )
     embed2 = discord.Embed(title ='💎 Базовые:', description='**``.user [@user]`` - Узнать информацию о пользователе 🎭\n ``.server`` - Узнать информацию о сервере 🧿\n `.bot` - Информация о боте 🤖\n`.avatar [@user]` - Аватар пользователя 🖼\n `.suggest (text)` - Предложить идею ✉\n `.wiki (text)` - Википедия 📖**', color=0x6fdb9e )
-    embed3 = discord.Embed(title ='✨ Роблокс:', description='**`.music` - Коды для музыки 💨\n `.scripts` - Скрипты для читерства 🧨\n `.script (number)` - Получить сам скрипт 💡**', color = 0x6fdb9e)
-    embed4 = discord.Embed(title ='🎉 Весёлости:', description='**``.ran_color`` - Рандомный цвет в формате HEX 🩸\n ``.coin`` - Бросить монетку 🌈\n ``.math (2*2/2+2-2)`` - Решить пример :infinity:\n `.8ball (question)` - Волшебный шар 🔮\n `.password (10 10)` - Рандомный пароль 🎩\n `.meme` - Рандомный мем 🤣**', color=0x6fdb9e)
-    embed5 = discord.Embed(title ='💋 Некос:', description='**`.hug (@user)` - Обнять 😜\n `.slap (@user)` - Ударить 😡\n `.ran_avatar` - Рандом. аватар 🤯\n `.kill [@user]` - Убить 🔪\n `.dog` - Собака :dog:\n `.goose` - Гусь :duck:\n `.cat` - Кот 🐱\n `.neko` - Рандомная аватарка в стиле аниме ✨**', color=0x6fdb9e)
-    embeds = [embed1, embed2, embed3, embed4, embed5]
+    embed3 = discord.Embed(title ='🎉 Весёлости:', description='**``.ran_color`` - Рандомный цвет в формате HEX 🩸\n ``.coin`` - Бросить монетку 🌈\n ``.math (2*2/2+2-2)`` - Решить пример :infinity:\n `.8ball (question)` - Волшебный шар 🔮\n `.password (10 10)` - Рандомный пароль 🎩\n `.meme` - Рандомный мем 🤣**', color=0x6fdb9e)
+    embed4 = discord.Embed(title ='💋 Некос:', description='**`.hug (@user)` - Обнять 😜\n `.slap (@user)` - Ударить 😡\n `.ran_avatar` - Рандом. аватар 🤯\n `.kill [@user]` - Убить 🔪\n `.dog` - Собака :dog:\n `.goose` - Гусь :duck:\n `.cat` - Кот 🐱\n `.neko` - Рандомная аватарка в стиле аниме ✨**', color=0x6fdb9e)
+    embeds = [embed1, embed2, embed3, embed4]
     message = await ctx.send(embed=embed1)
-    page = Paginator(bot, message, only=ctx.author, use_more=False, embeds=embeds, reactions=['<a:woof_x_left:713825760099565698>', '<a:woof_x_right:713825800440512694>'])
-    await page.start()
-
-@bot.command()
-async def music(ctx):
-    embed1 = discord.Embed(title ='📋 Страницы:', description='**`1.` - Страница 1 (1-6)\n `2.` - Страница 2 (7-12)\n `3.` - Страница 3 (13-19)**', color = 0x6fdb9e)
-    embed2 = discord.Embed(title ='⚠ Патент:', description='**`❗❗❗` Кто сп#здит коды, тому п#зда! <@342317507991961602> не касается! `❗❗❗`**', color = 0x6fdb9e)
-    embed3 = discord.Embed(title ='📋 Страница 1', description='**`1.` РА-ТА-ТА-ТА-ТА - `4618705402`\n `2.` Копы - `2933225417`\n `3.` Последняя - `4624707819`\n `4.` Чикибамбони - `4570427470`\n `5.` 4 Украинки - `4624707819`\n `6.` Пам пам пам - `2717372934`**', color = 0x6fdb9e)
-    embed4 = discord.Embed(title ='📋 Страница 2', description='**`7.` Грустный реп - `4518984639`\n `8.` Реальный Flesh - `3766039768`\n `9.` Ракета - `3666410231`\n `10.` Убьют за нас - `3134163814`\n `11.` Хубба Бубба - `4502015210`\n `12.` Надо Поле Притоптать - `1170717899`**', color = 0x6fdb9e)
-    embed5 = discord.Embed(title ='📋 Страница 3', description='**`13.` Паравозик тыр, тыр, тыр - `4244590201`\n `14.` Нейтороксин - `4466370680`\n `15.` Корабль идёт ко дну - `2774380819`\n `16.` Идол - `2941601894`\n `17.` Коронаминус - `4788523402`\n `18.` Попытка номер 5 - `4722362895`\n `19.` Супер друг - `4338357412`**', color = 0x6fdb9e)
-    embeds = [embed1, embed2, embed3, embed4, embed5]
-    message = await ctx.send(embed=embed1)
-    page = Paginator(bot, message,  only=ctx.author, use_more=False, embeds=embeds, reactions=['<a:woof_x_left:713825760099565698>', '<a:woof_x_right:713825800440512694>'])
-    await page.start()
-
-@bot.command()
-async def scripts(ctx):
-    embed1 = discord.Embed(title ='📋 Страницы:', description='**`1.` - Страница 1 (1-12)\n `2.` - Страница 2 (13-24)\n `3.` - Страница 3 (25-37)\n\n F.A.Q.\n ```Если вам выдадут бан в роблоксе, мы не будем причастны к этому так как мы просто даём скрипты!```**', color = 0x6fdb9e)
-    embed2 = discord.Embed(title ='⚠ Патент:', description='**`❗❗❗` Кто сп#здит скрипты, тому п#зда! <@342317507991961602> не касается! `❗❗❗`**', color = 0x6fdb9e)
-    embed3 = discord.Embed(title ='📋 Страница 1', description='**`1` - Break In\n `2` - Pet Ranch 2 Simulator\n `3` - Arsenal\n `4` - Build a Boat\n `5` - Fishing Simulator\n `6` - Flood Escape 2\n `7` - Bee Swarm Simulator\n `8` - Pizza Factory Tycoon\n `9` - Work At A Pizza Place\n `10` - Texting Simulator\n `11` - CB:RO\n `12` - Mad City**', color = 0x6fdb9e)
-    embed4 = discord.Embed(title ='📋 Страница 2', description='**`13` - Ghost Simulator\n `14` - Speed Run 4\n `15` - Ro-Ghoul\n `16` - RoCitizens\n `17` - Muscle Legends\n `18` - Bubble Gum Simulator\n `19` - BIG Paintball\n `20` - MeepCity\n `21` - Mineverse\n `22` - Soda Simulator\n `23` - Destruction Simulator\n `24` - Horrific Housing**', color = 0x6fdb9e)
-    embed5 = discord.Embed(title ='📋 Страница 3', description='**`25` - Shark Bite\n `26` - Piggy\n `27` - Lucky blocks\n `28` - A Wolf Or Other\n `29` - Jailbreak\n `30` - Robot Inc\n `31` - Pizza Factory Tycoon\n `32` - Work at a Pizza Place\n `33` - Tower of Hell\n `34` - A Bizarre Day\n `35` - Bakon\n `36` - Zombie Attack\n `37` -  Knife Ability Test (KAT)**', color = 0x6fdb9e)
-    embeds = [embed1, embed2, embed3, embed4, embed5]
-    message = await ctx.send(embed=embed1)
-    page = Paginator(bot, message, only=ctx.author, use_more=False, embeds=embeds, reactions=['<a:woof_x_left:713825760099565698>', '<a:woof_x_right:713825800440512694>'])
+    page = Paginator(bot, message, only=ctx.author, use_more=False, embeds=embeds)
     await page.start()
 
 @bot.command()
@@ -396,87 +360,6 @@ async def wiki(ctx, *, text):
     emb.set_author(name= 'Больше информации тут! Кликай!', url= new_page.url, icon_url= 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/80/Wikipedia-logo-v2.svg/1200px-Wikipedia-logo-v2.svg.png')
 
     await ctx.send(embed=emb)
-
-@bot.command()
-async def script(ctx, *, arg: int = None):
-  if arg == None:
-    await ctx.send(embed = discord.Embed(description = f'**Укажите номер скрипта.**', color=0x6fdb9e))
-  elif arg == 1:
-    await ctx.send(file=discord.File(fp = 'Scripts/Break_in_GUI.txt'))
-  elif arg == 2:
-    await ctx.send(file=discord.File(fp = 'Scripts/Pet_Racnh_2_script.txt'))
-  elif arg == 3:
-    await ctx.send(file=discord.File(fp = 'Scripts/Arsenal_Op_GUI.txt'))
-  elif arg == 4:
-    await ctx.send(file=discord.File(fp = 'Scripts/build_a_bot_for_treasure_gui.txt'))
-  elif arg == 5:
-    await ctx.send(file=discord.File(fp = 'Scripts/Fishing.txt'))
-  elif arg == 6:
-    await ctx.send(file=discord.File(fp = 'Scripts/Flood Escape 2.txt'))
-  elif arg == 7:
-    await ctx.send(file=discord.File(fp = 'Scripts/Bee Swarm Simulator.txt'))
-  elif arg == 8:
-    await ctx.send(file=discord.File(fp = 'Scripts/Pizza_Factory_Tycoon.txt'))
-  elif arg == 9:
-    await ctx.send(file=discord.File(fp = 'Scripts/Work_At_A_Pizza_Place.txt'))
-  elif arg == 10:
-    await ctx.send(file=discord.File(fp = 'Scripts/Texting_Simulator.txt'))
-  elif arg == 11:
-    await ctx.send(file=discord.File(fp = 'Scripts/CB:RO.txt'))
-  elif arg == 12:
-    await ctx.send(file=discord.File(fp = 'Scripts/MAD_LADS.txt'))
-    await ctx.send(file=discord.File(fp = 'Scripts/Auto_Rob.txt'))
-  elif arg == 13:
-    await ctx.send(file=discord.File(fp = 'Scripts/Ghost Simulator.txt'))
-  elif arg == 14:
-    await ctx.send(file=discord.File(fp = 'Scripts/Speed_Run_4.txt'))
-  elif arg == 15:
-    await ctx.send(file=discord.File(fp = 'Scripts/Ro-Ghoul.txt'))
-  elif arg == 16:
-    await ctx.send(file=discord.File(fp = 'Scripts/RoCitizens.txt'))
-  elif arg == 17:
-    await ctx.send(file=discord.File(fp = 'Scripts/Muscle_Legends.txt'))
-  elif arg == 18:
-    await ctx.send(file=discord.File(fp = 'Scripts/Bubble Gum Simulator.txt'))
-  elif arg == 19:
-    await ctx.send(file=discord.File(fp = 'Scripts/BIG Paintball.txt'))
-  elif arg == 20:
-    await ctx.send(file=discord.File(fp = 'Scripts/MeepCity.txt'))
-  elif arg == 21:
-    await ctx.send(file=discord.File(fp = 'Scripts/Mineverse.txt'))
-  elif arg == 22:
-    await ctx.send(file=discord.File(fp = 'Scripts/Soda_Simulator.txt'))
-  elif arg == 23:
-    await ctx.send(file=discord.File(fp = 'Scripts/Destruction_Simulator.txt'))
-  elif arg == 24:
-    await ctx.send(file=discord.File(fp = 'Scripts/Horrific Housing.txt'))
-    await ctx.send(file=discord.File(fp = 'Scripts/Horrific Housing 2.txt'))
-  elif arg == 25:
-    await ctx.send(file=discord.File(fp = 'Scripts/Shark Bite.txt'))
-  elif arg == 26:
-    await ctx.send(file=discord.File(fp = 'Scripts/Piggy Give Item.txt'))
-  elif arg == 27:
-    await ctx.send(file=discord.File(fp = 'Scripts/Lucky Block.txt'))
-  elif arg == 28:
-    await ctx.send(file=discord.File(fp = 'Scripts/A Wolf Of Others.txt'))
-  elif arg == 29:
-    await ctx.send(file=discord.File(fp = 'Scripts/AutoRobJail.txt'))
-  elif arg == 30:
-    await ctx.send(file=discord.File(fp = 'Scripts/Robot Inc.txt'))
-  elif arg == 31:
-    await ctx.send(file=discord.File(fp = 'Scripts/Pizza_Factory_Tycoon.txt'))
-  elif arg == 32:
-    await ctx.send(file=discord.File(fp = 'Scripts/Work_At_A_Pizza_Place.txt'))
-  elif arg == 33:
-    await ctx.send(file=discord.File(fp = 'Scripts/Tower_of_Hell.txt'))
-  elif arg == 34:
-    await ctx.send(file=discord.File(fp = 'Scripts/A Bizarre Day MODDED MINI GUI.txt'))
-  elif arg == 35:
-    await ctx.send(file=discord.File(fp = 'Scripts/Bakon GUI.txt'))
-  elif arg == 36:
-    await ctx.send(file=discord.File(fp = 'Scripts/Zombie Attack.txt'))
-  elif arg == 37:
-    await ctx.send(file=discord.File(fp = 'Scripts/KAT_Press_2.txt'))
 
 @bot.command()
 async def user(ctx, Member: discord.Member = None ):
