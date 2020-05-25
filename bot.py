@@ -162,41 +162,6 @@ async def on_raw_reaction_remove(payload):
             if member:
                 await member.remove_roles(role)
 
-@bot.command( pass_context = True, aliases = [ "Предложить", "предложить", "предложка", "Предложка", "Suggest" ])
-async def suggest( ctx , * , agr ):
-    if ctx.author.id == 662346548025491476:
-        await ctx.send(embed = discord.Embed(description = f"**Извините, но Вы не можете использовать данную команду так как создатель бота запретил Вам доступ к этой команде!**"))
-    else:
-        await ctx.message.add_reaction('✅')
-        suggest_chanell = bot.get_channel( 703655454563237969 ) #Айди канала предложки
-        embed = discord.Embed(title=f"{ctx.author.name} Предложил :", description= f" {agr} \n\n")
-
-        embed.set_thumbnail(url=ctx.guild.icon_url)
-
-        message = await suggest_chanell.send(embed=embed)
-        await message.add_reaction('✅')
-        await message.add_reaction('❎')
-
-@bot.event
-async def on_message(msg):
-    await bot.process_commands( msg )
-    if msg.author.bot or msg.author.id == 668325441224048641 or msg.author.id == 342317507991961602 or msg.author.id == 491928659599425537:
-        pass
-    else:
-        mes = msg.content.lower()
-        author = msg.author
-        mat = open('mat.txt', 'r', encoding='utf-8')
-        for line in mat:
-            if mes.find(line[0:-1]) != -1:
-                if msg.author.bot:
-                    pass
-                else:
-                    await msg.delete()
-                    await msg.channel.send(embed = discord.Embed(description= f"**{author.mention}, Вы написали сообщение в котором есть запрещённое слово!**", color = 0x75218f))
-                    print(f"⊱ {author.name}, произнёс слово [{msg.content}] ⊰")
-    
-        mat.close()
-
 @bot.event
 async def on_voice_state_update(member,before,after):
     if after.channel != None and after.channel.id == 712629884119416944:
@@ -339,9 +304,9 @@ async def password(ctx, lenght: int = None, number: int = None):
 @bot.command()
 async def help(ctx):
     embed1 = discord.Embed(title = '⚙ Навигация по командам:\n ❗ Обязательные параметры: `()`\n ❓ Необязательные параметры: `[]`', color=0x6fdb9e )
-    embed2 = discord.Embed(title ='💎 Базовые:', description='**``.user [@user]`` - Узнать информацию о пользователе 🎭\n ``.server`` - Узнать информацию о сервере 🧿\n `.bot` - Информация о боте 🤖\n`.avatar [@user]` - Аватар пользователя 🖼\n `.suggest (text)` - Предложить идею ✉\n `.wiki (text)` - Википедия 📖**', color=0x6fdb9e )
-    embed3 = discord.Embed(title ='🎉 Весёлости:', description='**``.ran_color`` - Рандомный цвет в формате HEX 🩸\n ``.coin`` - Бросить монетку 🌈\n ``.math (2*2/2+2-2)`` - Решить пример :infinity:\n `.8ball (question)` - Волшебный шар 🔮\n `.password (10 10)` - Рандомный пароль 🎩\n `.meme` - Рандомный мем 🤣**', color=0x6fdb9e)
-    embed4 = discord.Embed(title ='💋 Некос:', description='**`.hug (@user)` - Обнять 😜\n `.slap (@user)` - Ударить 😡\n `.ran_avatar` - Рандом. аватар 🤯\n `.kill [@user]` - Убить 🔪\n `.dog` - Собака :dog:\n `.goose` - Гусь :duck:\n `.cat` - Кот 🐱\n `.neko` - Рандомная аватарка в стиле аниме ✨**', color=0x6fdb9e)
+    embed2 = discord.Embed(title ='💎 Базовые:', description='**``h!user [@user]`` - Узнать информацию о пользователе 🎭\n ``h!server`` - Узнать информацию о сервере 🧿\n `h!bot` - Информация о боте 🤖\n`h!avatar [@user]` - Аватар пользователя 🖼\n `h!suggest (text)` - Предложить идею ✉\n `h!wiki (text)` - Википедия 📖**', color=0x6fdb9e )
+    embed3 = discord.Embed(title ='🎉 Весёлости:', description='**``h!ran_color`` - Рандомный цвет в формате HEX 🩸\n ``h!coin`` - Бросить монетку 🌈\n ``h!math (2*2/2+2-2)`` - Решить пример :infinity:\n `h!8ball (question)` - Волшебный шар 🔮\n `h!password (10 10)` - Рандомный пароль 🎩\n `h!meme` - Рандомный мем 🤣**', color=0x6fdb9e)
+    embed4 = discord.Embed(title ='💋 Некос:', description='**`h!hug (@user)` - Обнять 😜\n `h!slap (@user)` - Ударить 😡\n `h!ran_avatar` - Рандом. аватар 🤯\n `h!kill [@user]` - Убить 🔪\n `h!dog` - Собака :dog:\n `h!goose` - Гусь :duck:\n `h!cat` - Кот 🐱\n `h!neko` - Рандомная аватарка в стиле аниме ✨**', color=0x6fdb9e)
     embeds = [embed1, embed2, embed3, embed4]
     message = await ctx.send(embed=embed1)
     page = Paginator(bot, message, only=ctx.author, use_more=False, embeds=embeds)
