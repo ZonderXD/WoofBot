@@ -86,7 +86,7 @@ async def giveaway( ctx, seconds: int, *, text ):
         colour = 0x75218f).set_footer(
         text = '💦 𝙎𝘼𝙈𝙐𝙍𝘼𝙄 ツ#8992 © | Все права защищены',
         icon_url = ctx.message.author.avatar_url))
-    await message.add_reaction("")
+    await message.add_reaction("🎉")
     while seconds > -1:
         time_end = time_end_form(seconds)
         text_message = discord.Embed(
@@ -147,20 +147,6 @@ async def on_raw_reaction_add(payload):
             member = guild.get_member(payload.user_id)
             if member:
                 await member.add_roles(role)
-
-@bot.event
-async def on_raw_reaction_remove(payload):
-    if payload.message_id == 714560313697239044: # ID Сообщения
-        guild = bot.get_guild(payload.guild_id)
-        role = None
-
-        if str(payload.emoji) == '✅': # Emoji для реакций
-            role = guild.get_role(713846336595689552) # ID Ролей для выдачи
-
-        if role:
-            member = guild.get_member(payload.user_id)
-            if member:
-                await member.remove_roles(role)
 
 @bot.event
 async def on_voice_state_update(member,before,after):
