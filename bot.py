@@ -86,7 +86,7 @@ async def giveaway( ctx, seconds: int, *, text ):
         colour = 0x75218f).set_footer(
         text = '💦 𝙎𝘼𝙈𝙐𝙍𝘼𝙄 ツ#8992 © | Все права защищены',
         icon_url = ctx.message.author.avatar_url))
-    await message.add_reaction("<:bloody_x_verify:705059287449468949>")
+    await message.add_reaction("")
     while seconds > -1:
         time_end = time_end_form(seconds)
         text_message = discord.Embed(
