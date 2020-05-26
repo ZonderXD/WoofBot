@@ -36,7 +36,7 @@ async def on_ready():
 
 @bot.event
 async def is_owner(ctx):
-    return ctx.author.id == 668325441224048641 or  ctx.author.id == 369499654909591555 # Айди создателя бота
+    return ctx.author.id == 668325441224048641 or  ctx.author.id == 369499654909591555 or  ctx.author.id == 641932179211026442# Айди создателя бота
 
 @bot.command()
 @commands.check(is_owner)
