@@ -44,9 +44,12 @@ async def opros(ctx, *, arg):
 	await ctx.message.delete()
 	embed = discord.Embed(title=f"Опрос:", color = 0x00ffff)
 	embed.add_field(name=f'**Вопрос:**', value=f"**{arg}**\n", inline=False)  # Создает строку
-	embed.add_field(name=f'**Решение:**', value="**-=-=- Да - ❤ -=-=-\n -=-=- Нет - 💔 -=-=-**\n\n", inline=False)  # Создает строку
+	embed.add_field(name=f'**Решение:**', value="**-=-=- Да - 👍 -=-=-\n -=-=- Нет - 👎 -=-=-**\n\n", inline=False)  # Создает строку
 	embed.add_field(name=f'**Инфо:**', value="**Голосование будет длиться 1 минуту!**", inline=False)  # Создает строку
-	await ctx.send(embed=embed)
+	opros = await ctx.send(embed=embed)
+	
+	await opros.add_reaction("👍")
+	await opros.add_reaction("👎")
 
 def random_meme():
     with open('memes_data.txt', 'r') as file:
