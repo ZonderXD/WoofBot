@@ -27,7 +27,7 @@ cursor = conn.cursor()
 @bot.event
 async def on_ready():
     print(f'          [Hotel]')
-    await bot.change_presence(status = discord.Status.online, activity = discord.Game('Префикс: h!'))
+    await bot.change_presence(status = discord.Status.idle, activity = discord.Game('༼Ｓａｍｕｒａｉ༽#8896 тупой даун, префикс: h!'))
     print(f"[Hotel] Bot successfully launched!;")
     print(f"[Hotel] Name: [{bot.user}];")
     print(f'[Hotel] ID: [{bot.user.id}]')
@@ -36,7 +36,7 @@ async def on_ready():
 
 @bot.event
 async def is_owner(ctx):
-    return ctx.author.id == 668325441224048641 or  ctx.author.id == 369499654909591555 or  ctx.author.id == 641932179211026442# Айди создателя бота
+    return ctx.author.id == 668325441224048641 or  ctx.author.id == 369499654909591555 # Айди создателя бота
 
 @bot.command()
 @commands.check(is_owner)
