@@ -27,7 +27,7 @@ cursor = conn.cursor()
 @bot.event
 async def on_ready():
     print(f'          [Hotel]')
-    await bot.change_presence(status = discord.Status.idle, activity = discord.Game('༼Ｓａｍｕｒａｉ༽#8896 тупой даун, префикс: h!'))
+    await bot.change_presence(status = discord.Status.idle, activity = discord.Game('Префикс: h!'))
     print(f"[Hotel] Bot successfully launched!;")
     print(f"[Hotel] Name: [{bot.user}];")
     print(f'[Hotel] ID: [{bot.user.id}]')
