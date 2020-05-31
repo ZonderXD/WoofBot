@@ -87,7 +87,7 @@ async def giveaway( ctx, seconds: int, *, text ):
     message = await ctx.send(embed = discord.Embed(
         description = f"**Разыгрывается : `{text}`\nЗавершится через: `{time_end}` \n\nОрганизатор: {author.mention} \nДля участия нажмите на реакцию ниже.**",
         colour = 0x75218f).set_footer(
-        text = '𝙀𝙍𝙍𝙊𝙍 ツ#6666 © | Все права защищены',
+        text = '𝘾𝙮𝙗𝙚𝙧𝙎𝙚𝙘𝙪𝙧𝙞𝙩𝙮ツ#0001 © | Все права защищены',
         icon_url = ctx.message.author.avatar_url))
     await message.add_reaction("🎉")
     while seconds > -1:
@@ -95,7 +95,7 @@ async def giveaway( ctx, seconds: int, *, text ):
         text_message = discord.Embed(
             description = f"**Разыгрывается: `{text}`\nЗавершится через: `{time_end}` \n\nОрганизатор: {author.mention} \nДля участия нажмите на реакцию ниже.**",
             colour = 0x75218f).set_footer(
-            text = '𝙀𝙍𝙍𝙊𝙍 ツ#6666 © | Все права защищены',
+            text = '𝘾𝙮𝙗𝙚𝙧𝙎𝙚𝙘𝙪𝙧𝙞𝙩𝙮ツ#0001 © | Все права защищены',
             icon_url = ctx.message.author.avatar_url)
         await message.edit(embed = text_message)
         await asyncio.sleep(1)
@@ -118,7 +118,7 @@ async def giveaway( ctx, seconds: int, *, text ):
             win = discord.Embed(
                 description = f'**В этом розыгрыше нет победителя!**',
                 colour = 0x75218f).set_footer(
-                text = '𝙀𝙍𝙍𝙊𝙍 ツ#6666 © | Все права защищены',
+                text = '𝘾𝙮𝙗𝙚𝙧𝙎𝙚𝙘𝙪𝙧𝙞𝙩𝙮ツ#0001 © | Все права защищены',
                 icon_url = ctx.message.author.avatar_url)
         elif str(user_win.id) == str(bot.user.id):
             winners()
@@ -126,7 +126,7 @@ async def giveaway( ctx, seconds: int, *, text ):
             win = discord.Embed(
                 description = f'**Победитель розыгрыша: {user_win.mention}!\nНапишите организатору {author.mention}, чтобы получить награду.**',
                 colour = 0x75218f).set_footer(
-                text = '𝙀𝙍𝙍𝙊𝙍 ツ#6666 © | Все права защищены',
+                text = '𝘾𝙮𝙗𝙚𝙧𝙎𝙚𝙘𝙪𝙧𝙞𝙩𝙮ツ#0001 © | Все права защищены',
                 icon_url = ctx.message.author.avatar_url)
 
     winners()
@@ -134,7 +134,7 @@ async def giveaway( ctx, seconds: int, *, text ):
     await message.edit(embed = win)
     await author.send(embed = discord.Embed(description = f'**Ваш розыгрыш закончился.**',
                                             colour = 0x75218f).set_footer(
-        text = '𝙀𝙍𝙍𝙊𝙍 ツ#6666 © | Все права защищены',
+        text = '𝘾𝙮𝙗𝙚𝙧𝙎𝙚𝙘𝙪𝙧𝙞𝙩𝙮ツ#0001 © | Все права защищены',
         icon_url = ctx.message.author.avatar_url))
 
 @bot.event
@@ -196,13 +196,13 @@ async def on_member_join( member ):
 @bot.command(aliases=['bot'])
 async def botinfo(ctx):
     embed = discord.Embed(title=f"{ctx.guild.name}", description="Информация о боте **Отель Альтон#2307**.\n Бот был написан специально для проекта **`Отель Альтон`**,\n Подробнее о командах: **h!help`**", color = 0x00ffff)
-    embed.add_field(name=f'**Меня создал:**', value="`𝙀𝙍𝙍𝙊𝙍 ツ#6666`(<@668325441224048641>)", inline=False)  # Создает строку
+    embed.add_field(name=f'**Меня создал:**', value="`𝘾𝙮𝙗𝙚𝙧𝙎𝙚𝙘𝙪𝙧𝙞𝙩𝙮ツ#0001`(<@668325441224048641>)", inline=False)  # Создает строку
     embed.add_field(name=f'**Лицензия:**', value="LD-v7", inline=False)  # Создает строку
     embed.add_field(name=f'**Я написан на:**', value="Discord.py", inline=False)  # Создает строку
     embed.add_field(name=f'**Версия:**', value="V.3.0.1", inline=False)  # Создает строку
     embed.add_field(name=f'**Патч:**', value="10", inline=False)  # Создает строку
     embed.set_thumbnail( url = bot.user.avatar_url)
-    embed.set_footer(text=f"𝙀𝙍𝙍𝙊𝙍 ツ#6666 © | Все права защищены", icon_url='https://cdn.discordapp.com/avatars/668325441224048641/a_57993892db606d5adfacf36b67144222.gif?size=1024') # создаение футера
+    embed.set_footer(text=f"𝘾𝙮𝙗𝙚𝙧𝙎𝙚𝙘𝙪𝙧𝙞𝙩𝙮ツ#0001 © | Все права защищены", icon_url='https://cdn.discordapp.com/avatars/668325441224048641/a_4e8ca44ab97caaac6dafaed8e6dd6ec3.gif?size=1024') # создаение футера
     await ctx.send(embed=embed)
 
 @bot.command()
